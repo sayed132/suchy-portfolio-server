@@ -6,10 +6,10 @@ const { mongoose } = require("mongoose");
 const connectDB = require("./database/db");
 
 // router location
-const profileRoute = require("./router/profile.router");
-const serviceRoute = require("./router/service.router");
-const portfolioRoute = require("./router/portfolio.router");
-const eduRoute = require("./router/edu.router");
+// const profileRoute = require("./router/profile.router");
+// const serviceRoute = require("./router/service.router");
+// const portfolioRoute = require("./router/portfolio.router");
+// const eduRoute = require("./router/edu.router");
 const {
   getProfileController,
   createProfile,
@@ -28,7 +28,13 @@ const {
   getPortfolioController,
   createPortfolio,
 } = require("./controller/portfolio.controller");
-const { createEducation, getAllEduController, updateEduController, deleteEduController } = require("./controller/edu.controller");
+const {
+  createEducation,
+  getAllEduController,
+  updateEduController,
+  deleteEduController,
+} = require("./controller/edu.controller");
+const Profile = require("./models/profile.model");
 
 dotenv.config();
 app.use(express.json());
@@ -39,7 +45,26 @@ const port = process.env.PORT || 8040;
 // api router
 // app.use("/profile",profileRoute);
 app.post("/profile/create", createProfile);
-app.get("/profile", getProfileController);
+// app.get("/profile", getProfileController);
+app.get("/profile", async (req, res) => {
+  const _id = req.params.id;
+  console.log(_id, "user found");
+  const updateData = req.body;
+  try {
+    const userToUpdate = await Profile.findById(_id);
+    if (!userToUpdate) {
+      throw new CustomError("User not found!", 404);
+    }
+
+    Object.assign(userToUpdate, updateData);
+
+    await userToUpdate.save();
+
+    res
+      .status(200)
+      .json({ message: "User updated successfully!", user: userToUpdate });
+  } catch (error) {}
+});
 app.put("/profile/:id", updateProfileController);
 // app.use("/service",serviceRoute )
 app.post("/service/create", createService);
