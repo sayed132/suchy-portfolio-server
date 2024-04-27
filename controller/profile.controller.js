@@ -31,7 +31,7 @@ const updateProfileController = async (req, res) => {
   try {
     const userToUpdate = await Profile.findById(_id);
     if (!userToUpdate) {
-      throw new CustomError("User not found!", 404);
+      res.status(404).json({ message: "user not found!" });
     }
 
     Object.assign(userToUpdate, updateData);

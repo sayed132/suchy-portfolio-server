@@ -46,25 +46,19 @@ const port = process.env.PORT || 8040;
 // app.use("/profile",profileRoute);
 app.post("/profile/create", createProfile);
 // app.get("/profile", getProfileController);
-app.get("/profile", async (req, res) => {
-  const _id = req.params.id;
-  console.log(_id, "user found");
-  const updateData = req.body;
+app.get("/profile", async (req, res, next) => {
   try {
-    const userToUpdate = await Profile.findById(_id);
-    if (!userToUpdate) {
-      throw new CustomError("User not found!", 404);
+    const user = await Profile.find();
+    if (!user) {
+      throw new CustomError("no users found", 404);
     }
-
-    Object.assign(userToUpdate, updateData);
-
-    await userToUpdate.save();
-
-    res
-      .status(200)
-      .json({ message: "User updated successfully!", user: userToUpdate });
+    res.status(200).send({
+      statusBar: `all user fetched successfully`,
+      data: user,
+    });
   } catch (error) {}
 });
+
 app.put("/profile/:id", updateProfileController);
 // app.use("/service",serviceRoute )
 app.post("/service/create", createService);
