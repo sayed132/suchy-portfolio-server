@@ -45,20 +45,7 @@ const port = process.env.PORT || 8040;
 // api router
 // app.use("/profile",profileRoute);
 app.post("/profile/create", createProfile);
-// app.get("/profile", getProfileController);
-app.get("/profile", async (req, res, next) => {
-  try {
-    const user = await Profile.find();
-    if (!user) {
-      throw new CustomError("no users found", 404);
-    }
-    res.status(200).send({
-      statusBar: `all user fetched successfully`,
-      data: user,
-    });
-  } catch (error) {}
-});
-
+app.get("/profile", getProfileController);
 app.put("/profile/:id", updateProfileController);
 // app.use("/service",serviceRoute )
 app.post("/service/create", createService);
