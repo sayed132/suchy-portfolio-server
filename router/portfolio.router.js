@@ -9,7 +9,7 @@ const {
 const router = express.Router();
 
 router.post("/create", createPortfolio);
-router.get("/all-portfolio", getPortfolioController);
+router.get("/all", getPortfolioController);
 router.get("/:portfolioId", getSinglePortfolioController);
 router.put("/update/:portfolioId", updatePortfolioController);
 router.delete("/delete/:portfolioId", deletePortfolioController);

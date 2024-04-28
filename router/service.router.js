@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.post("/create", createService);
-router.get("/all-service", getServiceController);
+router.get("/all", getServiceController);
 router.delete("/delete/:serviceId", deleteServiceController);
 router.put("/update/:serviceId", updateServiceController);
 
