@@ -20,12 +20,18 @@ const PortfolioSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    link: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
+    liveLink: {
+      type: String,
+      trim: true,
+    },
+    WorkLink: {
+      type: String,
+      trim: true,
+    },
+    WorkLink2: {
+      type: String,
+      trim: true,
+    },
     image: {
       type: String,
       trim: true,
