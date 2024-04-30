@@ -14,6 +14,10 @@ const ProfileSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    client: {
+      type: String,
+      trim: true,
+    },
     phone: {
       type: String,
       trim: true,
