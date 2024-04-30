@@ -7,7 +7,7 @@ const createProfile = async (req, res) => {
     console.log(newProfile, "--> profile created successfully profileController line 7");
     res
       .status(201)
-      .json({ message: "user created successfully!", user: newProfile });
+      .json({ message: "user created successfully!", newProfile });
   } catch (error) {}
 };
 
@@ -19,7 +19,7 @@ const getProfileController = async (req, res, next) => {
     }
     res.status(200).send({
       statusBar: `all user fetched successfully`,
-      data: user,
+      user,
     });
   } catch (error) {}
 };
@@ -40,7 +40,7 @@ const updateProfileController = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "User updated successfully!", user: userToUpdate });
+      .json({ message: "User updated successfully!", userToUpdate });
   } catch (error) {}
 };
 

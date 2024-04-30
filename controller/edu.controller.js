@@ -12,7 +12,7 @@ const createEducation = async (req, res) => {
       .status(201)
       .json({
         message: "portfolio created successfully!",
-        education: newEducation,
+        newEducation,
       });
   } catch (error) {}
 };
@@ -25,7 +25,7 @@ const getAllEduController = async (req, res, next) => {
     }
     res.status(200).send({
       statusBar: `all education fetched successfully`,
-      data: education,
+      education,
     });
   } catch (error) {}
 };

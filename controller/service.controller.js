@@ -10,7 +10,7 @@ const createService = async (req, res) => {
     );
     res
       .status(201)
-      .json({ message: "service created successfully!", service: newService });
+      .json({ message: "service created successfully!", newService });
   } catch (error) {}
 };
 
@@ -22,7 +22,7 @@ const getServiceController = async (req, res,) => {
     }
     res.status(200).send({
       statusBar: `all user fetched successfully`,
-      data: service,
+      service,
     });
   } catch (error) {}
 };

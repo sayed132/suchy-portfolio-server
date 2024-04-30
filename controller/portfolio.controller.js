@@ -12,7 +12,7 @@ const createPortfolio = async (req, res) => {
       .status(201)
       .json({
         message: "portfolio created successfully!",
-        service: newPortfolio,
+        newPortfolio,
       });
   } catch (error) {}
 };
@@ -25,7 +25,7 @@ const getPortfolioController = async (req, res, next) => {
     }
     res.status(200).send({
       statusBar: `all portfolio fetched successfully`,
-      data: portfolio,
+      portfolio,
     });
   } catch (error) {}
 };
@@ -42,7 +42,7 @@ const getSinglePortfolioController = async (req, res) => {
 
     res.status(200).send({
       statusBar: `single portfolio fetched successfully`,
-      data: singlePortfolio,
+      singlePortfolio,
     });
   } catch (error) {}
 };
