@@ -42,7 +42,7 @@ const getSinglePortfolioController = async (req, res) => {
 
     res.status(200).send({
       statusBar: `single portfolio fetched successfully`,
-      // singlePortfolio,
+      singlePortfolio,
     });
   } catch (error) {}
 };
