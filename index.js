@@ -18,7 +18,11 @@ dotenv.config();
 app.use(express.json());
 
 app.use(cors({
-  origin: 'https://sanjidasuchy-portfolio.web.app/'
+  origin: [
+    'https://sanjidasuchy-portfolio.web.app/',
+    'https://sanjidasuchy-portfolio.firebaseapp.com/',
+    'http://localhost:5173',
+  ]
 }));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
