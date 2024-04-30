@@ -16,9 +16,11 @@ const eduRoute = require("./router/edu.router");
 
 dotenv.config();
 app.use(express.json());
+
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://sanjidasuchy-portfolio.web.app/'
 }));
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const port = process.env.PORT || 8040;
