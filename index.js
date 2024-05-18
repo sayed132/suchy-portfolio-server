@@ -44,6 +44,3 @@ app.listen(port, async () => {
 app.get("/", (req, res) => {
   res.send("welcome suchy's portfolio server");
 });
-app.get("/tst", (req, res) => {
-  res.send("test");
-});
